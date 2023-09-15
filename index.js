@@ -8,14 +8,20 @@ async function run () {
     const token = core.getInput('token');
     const octokit = github.getOctokit(token);
 
-    const response = await octokit.request("GET /orgs/{org}/repos", {
-      org: "octokit",
-      type: "private",
+    const response = await octokit.request("GET /repos/{owner}/{repo}/issues/{issue_number}/comments", {
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      issue_number: github.context.issue.number
     });
 
     core.info('Setting output...');
 
-    core.setOutput('changelog-text', response);
+    if (response.status === 200) {
+      core.info(JSON.stringify(response.data));
+      core.setOutput('changelog-text', response.status);
+    } else {
+      core.setFailed('Could not download issue comments. Request ended with ' + response.status);
+    }
 
     core.info('Done.');
   } catch (error) {

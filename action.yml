@@ -2,8 +2,8 @@
 name: Generate changelog
 description: Generate changelog from an issue comments
 inputs:
-  issue-id:
-    description: Issue ID
+  issue-number:
+    description: Issue number
     required: true
 outputs:
   changelog-text:

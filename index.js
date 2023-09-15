@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const changelogRegexPattern = /```changelog(?<changelog>[\s\S]+)```/gim;
+const changelogRegexPattern = /```changelog(?<changelog>[\s\S]+)```/;
 
 async function run () {
   try {
@@ -23,7 +23,7 @@ async function run () {
       for (const { user: { type }, body } of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
-          if (found) {
+          if (found && found.groups['changelog']) {
             core.info(found.groups);
           }
         }

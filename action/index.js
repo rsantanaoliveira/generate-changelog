@@ -9811,7 +9811,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(3338);
 const github = __nccwpck_require__(6719);
 
-const changelogRegexPattern = /```changelog(?<changelog>[\s\S]+)```/gim;
+const changelogRegexPattern = /```changelog(?<changelog>[\s\S]+)```/;
 
 async function run () {
   try {
@@ -9833,7 +9833,7 @@ async function run () {
       for (const { user: { type }, body } of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
-          if (found) {
+          if (found && found.groups['changelog']) {
             core.info(found.groups);
           }
         }

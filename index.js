@@ -1,4 +1,5 @@
 const core = require('@actions/core');
+const {context, octokit} = require('@actions/github');
 
 function run() {
   try {

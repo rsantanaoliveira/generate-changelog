@@ -9828,7 +9828,7 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
-      core.info(Object.keys(response.data));
+      core.info(Object.values(response.data));
     } else {
       core.setFailed('Could not download issue comments. Request ended with ' + response.status);
     }

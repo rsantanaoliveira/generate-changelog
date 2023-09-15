@@ -22,8 +22,8 @@ async function run () {
     if (response.status === 200) {
       for (const { user: { type }, body } of response.data) {
         if (type === 'User') {
-          const changelog = body.match(changelogRegexPattern);
-          core.info(changelog);
+          const found = body.match(changelogRegexPattern);
+          core.info(found.groups);
         }
       }
     } else {

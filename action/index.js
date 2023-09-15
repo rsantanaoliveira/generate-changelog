@@ -9811,6 +9811,8 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(3338);
 const github = __nccwpck_require__(6719);
 
+const changelogRegexPattern = /```changelog([\s\S]+)```/gim;
+
 async function run () {
   try {
     core.info('Executing...')
@@ -9829,8 +9831,9 @@ async function run () {
 
     if (response.status === 200) {
       for (const { user: { type }, body } of response.data) {
-        core.info(body);
-        core.info(type);
+        if (type === 'User') {
+          core.info(body.match(changelogRegexPattern))
+        }
       }
     } else {
       core.setFailed('Could not download issue comments. Request ended with ' + response.status);

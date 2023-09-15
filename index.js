@@ -20,11 +20,14 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
-      for (const { user: { type }, body } of response.data) {
+      for (const {user: {type}, body} of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
           if (found && found.groups.changelog !== null) {
-            core.info(found.groups.changelog);
+            const paragraphs = found.groups.changelog.split(/\n\s*\n/);
+            for (const paragraph of paragraphs) {
+              core.info('* ' + paragraph.trim());
+            }
           }
         }
       }

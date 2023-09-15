@@ -27,7 +27,7 @@ async function run () {
           if (found && found.groups.changelog !== null) {
             const paragraphs = found.groups.changelog.split(/\n\s*\n/);
             for (const paragraph of paragraphs) {
-              changelog += '\r\n' + paragraph.trim();
+              changelog += '\\r\\n ' + paragraph.trim();
             }
             core.setOutput('changelog-text', changelog);
           }

@@ -5,11 +5,8 @@ function run() {
   try {
     core.info('Executing...')
 
-    const issueNumber = core.getInput('issue-number');
-    core.info('issue-number: '+ issueNumber);
-
     core.info('Setting output...');
-    core.setOutput('changelog-text', 'The issue id is: ' + issueNumber);
+    core.setOutput('changelog-text', 'Issue number: ' + context.issue.number);
 
     core.info('Done.');
   } catch (error) {

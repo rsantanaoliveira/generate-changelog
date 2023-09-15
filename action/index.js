@@ -2856,7 +2856,7 @@ const core = __nccwpck_require__(338);
 async function run() {
   try {
     core.info('starting')
-    core.debug('starting debug')
+    core.debug('starting debug...')
     const issueNumber = core.getInput('issue-number');
     core.setOutput('changelog-text', 'The issue id is: ' + issueNumber);
     core.info('logging '+ issueNumber);

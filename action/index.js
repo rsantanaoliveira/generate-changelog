@@ -9828,9 +9828,7 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
-      const comments = response.data.json();
-
-      for (let comment in comments) {
+      for (let comment in response.data) {
         core.info(comment['user']['type'] + ' ' + comment['body'])
       }
     } else {

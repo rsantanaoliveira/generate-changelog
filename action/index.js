@@ -9831,11 +9831,11 @@ async function run () {
 
     if (response.status === 200) {
       for (const {user: {type}, body} of response.data) {
+        let changelog = 'Sun was released: ';
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
           if (found && found.groups.changelog !== null) {
             const paragraphs = found.groups.changelog.split(/\n\s*\n/);
-            let changelog = 'Sun was released: ';
             for (const paragraph of paragraphs) {
               changelog += '\n* ' + paragraph.trim();
             }

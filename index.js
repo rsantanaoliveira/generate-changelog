@@ -23,7 +23,9 @@ async function run () {
       for (const { user: { type }, body } of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
-          core.info(found.groups);
+          if (found) {
+            core.info(found.groups);
+          }
         }
       }
     } else {

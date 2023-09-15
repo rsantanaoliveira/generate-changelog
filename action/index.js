@@ -9828,8 +9828,8 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
-      for (const comments in Object.values(response.data)) {
-        core.info(comments[ 'body' ] + ' ' + comments.body);
+      for (const comment in Object.values(response.data)) {
+        core.info(JSON.stringify(comment));
       }
     } else {
       core.setFailed('Could not download issue comments. Request ended with ' + response.status);

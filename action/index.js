@@ -9833,8 +9833,8 @@ async function run () {
       for (const { user: { type }, body } of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
-          if (found && found.groups['changelog'] !== null) {
-            core.info(found.groups);
+          if (found && found.groups.changelog !== null) {
+            core.info(found.groups.changelog);
           }
         }
       }

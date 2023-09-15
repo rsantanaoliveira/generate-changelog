@@ -1,0 +1,13 @@
+---
+name: Generate changelog
+description: Generate changelog from an issue comments
+inputs:
+  issue-id:
+    description: Issue ID
+    required: true
+outputs:
+  changelog-text:
+    description: The format changelog text
+runs:
+  using: node20
+  main: action/index.js

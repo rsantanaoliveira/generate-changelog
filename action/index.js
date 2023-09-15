@@ -9830,8 +9830,8 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
+      let changelog = 'Sun was released: ';
       for (const {user: {type}, body} of response.data) {
-        let changelog = 'Sun was released: ';
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);
           if (found && found.groups.changelog !== null) {

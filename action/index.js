@@ -9830,6 +9830,7 @@ async function run () {
     if (response.status === 200) {
       for (const { user: { type }, body } of response.data) {
         core.info(body);
+        core.info(type);
       }
     } else {
       core.setFailed('Could not download issue comments. Request ended with ' + response.status);

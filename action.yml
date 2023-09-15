@@ -2,11 +2,11 @@
 name: Generate changelog
 description: Generate changelog from an issue comments
 inputs:
-  issue-number:
-    description: Issue number
+  token:
+    description: Token (secrets.GITHUB_TOKEN)
     required: true
 outputs:
-  changelog-text:
+  changelog:
     description: The format changelog text
 runs:
   using: node20

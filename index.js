@@ -1,12 +1,21 @@
 const core = require('@actions/core');
-const {context, octokit} = require('@actions/github');
+const github = require('@actions/github');
 
-function run() {
+async function run () {
   try {
     core.info('Executing...')
 
+    const token = core.getInput('token');
+    const octokit = github.getOctokit(token);
+
+    const response = await octokit.request("GET /orgs/{org}/repos", {
+      org: "octokit",
+      type: "private",
+    });
+
     core.info('Setting output...');
-    core.setOutput('changelog-text', 'Issue number: ' + context.issue.number);
+
+    core.setOutput('changelog-text', response);
 
     core.info('Done.');
   } catch (error) {

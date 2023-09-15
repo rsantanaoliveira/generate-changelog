@@ -9809,14 +9809,23 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(3338);
-const {context, octokit} = __nccwpck_require__(6719);
+const github = __nccwpck_require__(6719);
 
-function run() {
+async function run () {
   try {
     core.info('Executing...')
 
+    const token = core.getInput('token');
+    const octokit = github.getOctokit(token);
+
+    const response = await octokit.request("GET /orgs/{org}/repos", {
+      org: "octokit",
+      type: "private",
+    });
+
     core.info('Setting output...');
-    core.setOutput('changelog-text', 'Issue number: ' + context.issue.number);
+
+    core.setOutput('changelog-text', response);
 
     core.info('Done.');
   } catch (error) {

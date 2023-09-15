@@ -2853,13 +2853,17 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(338);
 
-async function run() {
+function run() {
   try {
-    core.info('starting')
-    core.debug('starting debug...')
+    core.info('Executing...')
+
     const issueNumber = core.getInput('issue-number');
+    core.info('issue-number: '+ issueNumber);
+
+    core.info('Setting output...');
     core.setOutput('changelog-text', 'The issue id is: ' + issueNumber);
-    core.info('logging '+ issueNumber);
+
+    core.info('Done.');
   } catch (error) {
     core.setFailed(error.message);
   }

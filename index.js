@@ -19,7 +19,7 @@ async function run () {
 
     if (response.status === 200) {
       for (const comment in response.data) {
-        core.info(comment.body);
+        core.info(JSON.stringify(comment));
       }
     } else {
       core.setFailed('Could not download issue comments. Request ended with ' + response.status);

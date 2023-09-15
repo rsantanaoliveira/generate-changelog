@@ -20,7 +20,7 @@ async function run () {
     core.info('Setting output...');
 
     if (response.status === 200) {
-      let changelog = 'Sun was released: ';
+      let changelog = '**Sun was [released](https://github.com/' + github.context.repo.owner + '/' + github.context.repo.repo + '/issues/' + github.context.issue.number + '):**';
       for (const {user: {type}, body} of response.data) {
         if (type === 'User') {
           const found = body.match(changelogRegexPattern);

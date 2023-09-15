@@ -2855,8 +2855,11 @@ const core = __nccwpck_require__(338);
 
 async function run() {
   try {
-    const issueId = core.getInput('issue-id');
-    core.setOutput('changelog-text', 'The issue id is: ' + issueId);
+    core.info('starting')
+    core.debug('starting debug')
+    const issueNumber = core.getInput('issue-number');
+    core.setOutput('changelog-text', 'The issue id is: ' + issueNumber);
+    core.info('logging '+ issueNumber);
   } catch (error) {
     core.setFailed(error.message);
   }

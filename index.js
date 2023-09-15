@@ -6,7 +6,6 @@ async function run() {
     core.debug('starting debug')
     const issueNumber = core.getInput('issue-number');
     core.setOutput('changelog-text', 'The issue id is: ' + issueNumber);
-    core.exportVariable('changelog-text', 'The issue id is: ' + issueNumber);
     core.info('logging '+ issueNumber);
   } catch (error) {
     core.setFailed(error.message);

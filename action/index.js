@@ -9837,7 +9837,7 @@ async function run () {
           if (found && found.groups.changelog !== null) {
             const paragraphs = found.groups.changelog.split(/\n\s*\n/);
             for (const paragraph of paragraphs) {
-              changelog += '\n- ' + paragraph.trim();
+              changelog += '\n' + paragraph.trim();
             }
             core.setOutput('changelog-text', changelog);
           }
